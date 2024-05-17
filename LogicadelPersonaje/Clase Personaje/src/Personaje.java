@@ -46,12 +46,12 @@ public class Personaje {
         }
     }
 //(USAR) si esta la wea en el inventario lo usa y si no nopo
-    public boolean usar(String objeto) {
+    public void usar(String objeto) {
         if (inventario.contains(objeto)) {
             inventario.remove(objeto); // lo elimina si esta presente
-            return true;
+            System.out.println("Usaste el objeto:" + objeto);
         } else {
-            return false;
+            System.out.println("El Objeto:" + objeto+ " no esta disponible");
         }
     }
 // SALUD: (+) heal para aumentar vidas cuando se cure ***
