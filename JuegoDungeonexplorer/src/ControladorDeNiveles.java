@@ -7,7 +7,7 @@ public class ControladorDeNiveles {
     private final Map<String, String> niveles = new HashMap<>();
     String idRoomActual;
     Scanner sc = new Scanner(System.in);
-
+  
     //Iniciar el juego y niveles
     public void initGame(){
         niveles.put("0.0", "rewardRoom");
@@ -205,5 +205,4 @@ public class ControladorDeNiveles {
         return null;
     }
 }
-
 
