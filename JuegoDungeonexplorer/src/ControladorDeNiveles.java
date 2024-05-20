@@ -1,5 +1,3 @@
-package contenidoSalas;
-
 import java.util.*;
 
 public class ControladorDeNiveles {
@@ -12,9 +10,9 @@ public class ControladorDeNiveles {
   
     //Iniciar el juego y niveles
     public void initGame(){
-        niveles.put("0.0", new salaTesoro());
+        niveles.put("0.0", new salaTesoro(new Llave("llave","una llave dorada un poco oxidada")));
         niveles.put("1.0", new salaVacia());
-        niveles.put("2.0", new salaEnemigo());
+        niveles.put("2.0", new salaEnemigo("Mayordomo"));
         niveles.put("3.0", new salaVacia());
         niveles.put("2.1", new salaTesoro());
         niveles.put("2.2", new salaEnemigo());
@@ -105,8 +103,13 @@ public class ControladorDeNiveles {
                     }
                 break;
             case "4.0"://room 5.0
-                roomActual = niveles.get("5.0");
-                index="5.0";
+                if(keyisUsed){
+                    roomActual = niveles.get("5.0");
+                    index="5.0";
+                    keyisUsed=false;
+                }else{
+                    System.out.println("La Puerta esta con llave no se puede abrir");
+                }
                 break;
                 case "5.0"://room 6.0
                     roomActual = niveles.get("6.0");
@@ -134,6 +137,7 @@ public class ControladorDeNiveles {
                 System.out.println("Despertaste del sueño");
                 break;
         }
+        roomActual.descripcionSala();
     }
     //Retroceder
     public void backtroom() {
@@ -193,6 +197,7 @@ public class ControladorDeNiveles {
                 index="6.0";
                 break;
         }
+        roomActual.descripcionSala();
     }
 
 }

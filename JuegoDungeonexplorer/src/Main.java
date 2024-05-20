@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 
@@ -7,7 +8,7 @@ public class Main {
 
 
         Personaje jugador = new Personaje();
-
+        ControladorDeNiveles nivelController = new ControladorDeNiveles();
 
         System.out.print("Ingresa el nombre del jugador: ");
         String nombre = scanner.nextLine();
@@ -33,27 +34,34 @@ public class Main {
 
             switch (opcion) {
                 case "avanzar":
-
+                    nivelController.nextroom();
 
                     break;
                 case "retroceder":
-
+                    nivelController.backtroom();
                     break;
                 case "estatus":
                     mostrarEstado(jugador);
-
                     break;
                 case "recoger":
+                    System.out.print("Que desea recoger? ");
+                    nivelController.getroomActual().recoger(scanner.nextLine(),jugador);
 
                     break;
                 case "usar":
+                    System.out.print("Que desea usar? ");
+                    String palabraClave= scanner.nextLine();
+                    jugador.usar(palabraClave);
+                    if(palabraClave.equals("llave")){
+                        nivelController.setKeyisUsed(true);
+                    }
 
                     break;
                 case "help":
                     mostrarOpciones();
                     break;
                 case "salir":
-
+                    running=false;
                     break;
                 default:
 
@@ -65,7 +73,7 @@ public class Main {
     }
 
     private static void mostrarOpciones() {
-        System.out.println("\nOpciones disponibles:");
+        System.out.println("\nComandos");
         System.out.println(" - avanzar");
         System.out.println(" - retroceder");
         System.out.println(" - estatus");

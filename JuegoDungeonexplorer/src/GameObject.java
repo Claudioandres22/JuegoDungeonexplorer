@@ -1,5 +1,3 @@
-package contenidoSalas;
-
 public abstract class GameObject {
     public String nombreObjeto;
     public String descripcionObjeto;
@@ -28,7 +26,7 @@ public abstract class GameObject {
     public void setDescripcionObjeto(String descripcionObjeto) {
         this.descripcionObjeto = descripcionObjeto;
     }
-    public void usar(){}
+    public void usar(Personaje p){}
 
 }
 
