@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 
@@ -7,7 +8,7 @@ public class Main {
 
 
         Personaje jugador = new Personaje();
-
+        ControladorDeNiveles nivelController = new ControladorDeNiveles();
 
         System.out.print("Ingresa el nombre del jugador: ");
         String nombre = scanner.nextLine();
@@ -33,29 +34,44 @@ public class Main {
 
             switch (opcion) {
                 case "avanzar":
+                    //usar la funcion del nivelcontroller de avanzar
 
+                    if(nivelController.getIndex().equals("2.0")||nivelController.getIndex().equals("2.2")||nivelController.getIndex().equals("3.2")||nivelController.getIndex().equals("5.0")||nivelController.getIndex().equals("6.1")){
+                        //llamar a la funcion de recibir daño de jugador
+                    }
 
                     break;
                 case "retroceder":
-
+                    //usar la funcion del nivelcontroller de retroceder
+                    if(nivelController.getIndex().equals("2.0")||nivelController.getIndex().equals("2.2")||nivelController.getIndex().equals("3.2")||nivelController.getIndex().equals("5.0")||nivelController.getIndex().equals("6.1")){
+                        //llamar a la funcion de recibir daño de jugador
+                    }
                     break;
                 case "estatus":
                     mostrarEstado(jugador);
-
                     break;
                 case "recoger":
+                    System.out.print("Que desea recoger? ");
+                    //llamar al controlador,conseguir el roomactual y llamar a su funcion recoger
+
 
                     break;
                 case "usar":
-
+                    System.out.print("Que desea usar? ");
+                    String palabraClave= scanner.nextLine();
+                   //llamar a la funcion del jugador "usar" y pasarle el argumento palabra clave
+                    if(palabraClave.equals("llave")){
+                        nivelController.setKeyisUsed(true);
+                    }
                     break;
                 case "help":
                     mostrarOpciones();
                     break;
                 case "salir":
-
+                    running=false;
                     break;
                 default:
+                    //agregar algun sout que represente una opcion no esperada
 
                     break;
             }
@@ -65,7 +81,7 @@ public class Main {
     }
 
     private static void mostrarOpciones() {
-        System.out.println("\nOpciones disponibles:");
+        System.out.println("\nComandos");
         System.out.println(" - avanzar");
         System.out.println(" - retroceder");
         System.out.println(" - estatus");

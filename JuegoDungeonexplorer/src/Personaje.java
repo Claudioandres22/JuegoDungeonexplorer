@@ -1,8 +1,3 @@
-import contenidoSalas.GameObject;
-import contenidoSalas.Pocion;
-import contenidoSalas.CajaCarton;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,59 +36,41 @@ public class Personaje {
     public List<GameObject> getInventario() {
         return inventario;
     }
+
+    // set protegido
+    public void setProtegidoConCaja(boolean p){
+        this.protegidoConCaja = p;
+    }
+
     // (AGREGAR) objeto al inventario
     public void agregar(GameObject objeto) {
         inventario.add(objeto);
     }
-    //(BUSCAR) para buscar objeto en el inventario
-    public void buscar(GameObject objeto) {
-        if (inventario.contains(objeto)) {
-            System.out.println("El objeto: " + objeto.getNombreObjeto() + "está en el inventario.");
-        } else {
-            System.out.println("El objeto: " + objeto.getNombreObjeto() + "no está en el inventario.");
-        }
-    }
-    // RECOGER OBJETOS: agrega objetos al inventario
-    public void recoger(GameObject objeto) {
-        inventario.add(objeto);
-        System.out.println("Has recogido: " + objeto.getNombreObjeto());
-    }
-    // (USAR POCION + HEAL PARA CURAR 1 DE VIDA
-    public void usarPocion() {
-        Pocion pocion = new Pocion("Pocion"," cura vida");
-        if (inventario.contains(pocion)) {
-            heal(1);
-            inventario.remove(pocion);
-            System.out.println("Te has curado con la Poción que recibiste.");
-        } else {
-            System.out.println("No tienes ninguna Poción en tu inventario.");
+
+
+    public void usar(String objetoausar){
+        for (GameObject objeto : inventario) {
+            if (objeto.getNombreObjeto().equals(objetoausar)) {
+                objeto.usar(this);
+                break;
+            }
         }
     }
     // SALUD: (+) metodo heal para aumentar vidas cuando se cure ***
-    public void heal(int cantidad) {
+    public void heal() {
+
         vidas++; //aumenta en 1
     }
     //SALUD: (-) if para restar daño
     public void recibirDanio(int Danio) {
-        vidas --; //resta una vida
-        if (vidas <= 0) { // si llega a 0 muere y aparece el mensaje
-            System.out.println("¡Has sido derrotado! Quedaste atrapado para siempre en los oscuros confines de la mansión embrujada. Tus gritos se pierden en el eco eterno de sus muros, condenado a deambular entre las sombras por toda la eternidad");
-        }
-    }
-    //Protegerse con una caja de carton
-    public void protegerseConCaja() {
-        boolean tieneCajaCarton = false;
-        for (GameObject objeto : inventario) {
-            if (objeto.getClass().equals(CajaCarton.class)) {
-                tieneCajaCarton = true;
-                break;
+        if(protegidoConCaja){
+            System.out.println("el enemigo no te detecto");
+        }else {
+            vidas --; //resta una vida
+            if (vidas <= 0) { // si llega a 0 muere y aparece el mensaje
+                System.out.println("¡Has sido derrotado! Quedaste atrapado para siempre en los oscuros confines de la mansión embrujada. Tus gritos se pierden en el eco eterno de sus muros, condenado a deambular entre las sombras por toda la eternidad");
             }
         }
-        if (tieneCajaCarton) {
-            protegidoConCaja = true;
-            System.out.println("Te has protegido con una caja de cartón. El enemigo no se da cuenta de tu movimiento, Snake estaría orgulloso de ti.");
-        } else {
-            System.out.println("No tienes una caja de cartón en tu inventario para protegerte.");
-        }
     }
+
 }

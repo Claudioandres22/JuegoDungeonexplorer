@@ -1,5 +1,3 @@
-package contenidoSalas;
-
 public class Pocion extends GameObject {
 
 
@@ -9,9 +7,8 @@ public class Pocion extends GameObject {
     }
 //Funcion de usar poción, personaje se hizo para que funcione
     @Override
-    public void usar() {
-        Personaje jug1 = new Personaje();
-        jug1.heal(1);
+    public void usar(Personaje p) {
+        p.heal();
         System.out.println("Has tomado la poción, has recuperado 1 vida");
     }
 

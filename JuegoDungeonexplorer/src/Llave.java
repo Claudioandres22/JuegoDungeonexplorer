@@ -1,5 +1,3 @@
-package contenidoSalas;
-
 public class Llave extends GameObject {
 
     public Llave(String nombreObjeto, String descripcionObjeto) {
@@ -14,9 +12,8 @@ public class Llave extends GameObject {
     }
 
     @Override
-    public void usar() {
-    ControladorDeNiveles controladorDeNiveles = new ControladorDeNiveles();
-    controladorDeNiveles.setKeyisUsed(true);
+    public void usar(Personaje p) {
+
         System.out.println("Introduciste la llave en la puerta, se ha abierto");
     }
 }

@@ -1,5 +1,3 @@
-package contenidoSalas;
-
 public class CajaCarton extends GameObject {
 
     public CajaCarton(String nombreObjeto, String descripcionObjeto) {
@@ -12,7 +10,10 @@ public class CajaCarton extends GameObject {
     }
 
     @Override
-    public void usar() {
-        super.usar();
+    public void usar(Personaje p) {
+        System.out.println("empizas a gatear con la caja encima, no creo que nadie sea lo suficiente perspicaz para darse cuenta");
+        System.out.println("Snake estaria orgulloso de ti");
+        p.setProtegidoConCaja(true);
+
     }
 }
