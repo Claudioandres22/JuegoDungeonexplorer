@@ -1,6 +1,6 @@
 package contenidoSalas;
 
-public class salaVacia implements room {
+public class salaVacia extends room {
     public salaVacia() {
     }
 

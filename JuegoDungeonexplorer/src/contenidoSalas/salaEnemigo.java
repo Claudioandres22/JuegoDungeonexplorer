@@ -1,14 +1,18 @@
 package contenidoSalas;
 
-public class salaEnemigo implements room {
+public class salaEnemigo extends room {
 
     private String nombreEnemigo;
 
 
     public String getnombreEnemigo() {
+
         return nombreEnemigo;
     }
 
+    public void setNombreEnemigo(String nombreEnemigo) {
+        this.nombreEnemigo = nombreEnemigo;
+    }
 
     @Override
     public void descripcionSala() {

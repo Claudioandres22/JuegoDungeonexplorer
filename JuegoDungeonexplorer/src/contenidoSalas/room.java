@@ -1,10 +1,16 @@
 package contenidoSalas;
 
-public interface room {
+public abstract class room {
 
-    void descripcionSala();
-    void buscar();
-    void recoger(String n);
+    public void descripcionSala(){
+
+    }
+    public void buscar(){
+
+    }
+    public void recoger(String n){
+
+    }
 
 
 
