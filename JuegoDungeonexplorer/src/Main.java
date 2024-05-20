@@ -34,28 +34,35 @@ public class Main {
 
             switch (opcion) {
                 case "avanzar":
-                    nivelController.nextroom();
+                    //usar la funcion del nivelcontroller de avanzar
+
+                    if(nivelController.getIndex().equals("2.0")||nivelController.getIndex().equals("2.2")||nivelController.getIndex().equals("3.2")||nivelController.getIndex().equals("5.0")||nivelController.getIndex().equals("6.1")){
+                        //llamar a la funcion de recibir daño de jugador
+                    }
 
                     break;
                 case "retroceder":
-                    nivelController.backtroom();
+                    //usar la funcion del nivelcontroller de retroceder
+                    if(nivelController.getIndex().equals("2.0")||nivelController.getIndex().equals("2.2")||nivelController.getIndex().equals("3.2")||nivelController.getIndex().equals("5.0")||nivelController.getIndex().equals("6.1")){
+                        //llamar a la funcion de recibir daño de jugador
+                    }
                     break;
                 case "estatus":
                     mostrarEstado(jugador);
                     break;
                 case "recoger":
                     System.out.print("Que desea recoger? ");
-                    nivelController.getroomActual().recoger(scanner.nextLine(),jugador);
+                    //llamar al controlador,conseguir el roomactual y llamar a su funcion recoger
+
 
                     break;
                 case "usar":
                     System.out.print("Que desea usar? ");
                     String palabraClave= scanner.nextLine();
-                    jugador.usar(palabraClave);
+                   //llamar a la funcion del jugador "usar" y pasarle el argumento palabra clave
                     if(palabraClave.equals("llave")){
                         nivelController.setKeyisUsed(true);
                     }
-
                     break;
                 case "help":
                     mostrarOpciones();
@@ -64,6 +71,7 @@ public class Main {
                     running=false;
                     break;
                 default:
+                    //agregar algun sout que represente una opcion no esperada
 
                     break;
             }

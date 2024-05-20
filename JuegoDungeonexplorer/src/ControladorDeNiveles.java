@@ -10,8 +10,10 @@ public class ControladorDeNiveles {
   
     //Iniciar el juego y niveles
     public void initGame(){
+        //usen este como ejemplo para las otras salas tesoro
         niveles.put("0.0", new salaTesoro(new Llave("llave","una llave dorada un poco oxidada")));
         niveles.put("1.0", new salaVacia());
+        //usen este como ejemplo para las otras salas de enemigo
         niveles.put("2.0", new salaEnemigo("Mayordomo"));
         niveles.put("3.0", new salaVacia());
         niveles.put("2.1", new salaTesoro());
@@ -34,6 +36,10 @@ public class ControladorDeNiveles {
 
     public boolean isKeyisUsed() {
         return keyisUsed;
+    }
+
+    public String getIndex() {
+        return index;
     }
 
     public void setKeyisUsed(boolean keyisUsed) {
@@ -137,6 +143,7 @@ public class ControladorDeNiveles {
                 System.out.println("Despertaste del sueño");
                 break;
         }
+        //cada caso hara un sout de la descripcion de la sala revisen la funcion descripcion de cada sala para saber que sucede cuando es llamada
         roomActual.descripcionSala();
     }
     //Retroceder
