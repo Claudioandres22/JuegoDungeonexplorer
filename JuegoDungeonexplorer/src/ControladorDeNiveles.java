@@ -1,211 +1,68 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class ControladorDeNiveles {
+    private boolean keyIsUsed = false;
+    private String index = "1.0"; // Comienza en la Sala Vacía
+    private final Map<String, Room> niveles = new HashMap<>();
+    private Room roomActual;
+    private Scanner sc = new Scanner(System.in);
+    private Personaje jugador;
 
-    private boolean keyisUsed=false;
-    public String index ="0.0";
-    private final Map<String, room> niveles = new HashMap<>();
-    private room roomActual;
-    Scanner sc = new Scanner(System.in);
-  
-    //Iniciar el juego y niveles
-    public void initGame(){
-        //usen este como ejemplo para las otras salas tesoro
-        niveles.put("0.0", new salaTesoro(new Llave("llave","una llave dorada un poco oxidada")));
-        niveles.put("1.0", new salaVacia());
-        //usen este como ejemplo para las otras salas de enemigo
-        niveles.put("2.0", new salaEnemigo("Mayordomo"));
-        niveles.put("3.0", new salaVacia());
-        niveles.put("2.1", new salaTesoro());
-        niveles.put("2.2", new salaEnemigo());
-        niveles.put("3.1", new salaTesoro());
-        niveles.put("3.2", new salaEnemigo());
-        niveles.put("4.0", new salaVacia());
-        niveles.put("5.0", new salaEnemigo());
-        niveles.put("6.0", new salaVacia());
-        niveles.put("6.1", new salaEnemigo());
-        niveles.put("6.2", new salaVacia());
-
-        roomActual = new salaTesoro();
-
-    }
-
-    public ControladorDeNiveles() {
+    public ControladorDeNiveles(Personaje jugador) {
+        this.jugador = jugador;
         initGame();
     }
 
-    public boolean isKeyisUsed() {
-        return keyisUsed;
+    public void initGame() {
+        niveles.put("0.0", new SalaTesoro(new Llave("Llave", "Una llave dorada un poco oxidada")));
+        niveles.put("1.0", new SalaVacia());
+        niveles.put("2.0", new SalaEnemigo("Mayordomo"));
+        niveles.put("3.0", new SalaVacia());
+        niveles.put("2.1", new SalaTesoro(new Vela("Vela", "Una vela antigua que parece estar encantada")));
+        niveles.put("2.2", new SalaEnemigo("Bestia misteriosa"));
+        niveles.put("3.1", new SalaTesoro(new AguaBendita("Agua Bendita", "Un frasco de agua bendita")));
+        niveles.put("3.2", new SalaEnemigo("Guardián"));
+        niveles.put("4.0", new SalaVacia());
+        niveles.put("5.0", new SalaEnemigo("Espectro"));
+        niveles.put("6.0", new SalaVacia());
+        niveles.put("6.1", new SalaEnemigo("Ente oscuro"));
+        niveles.put("6.2", new SalaVacia());
+
+        roomActual = niveles.get(index);
     }
 
-    public String getIndex() {
-        return index;
+    public void examinar() {
+        System.out.println("¿Qué ves en la habitación?");
+        roomActual.examinar();
     }
 
-    public void setKeyisUsed(boolean keyisUsed) {
-        this.keyisUsed = keyisUsed;
-    }
-    public room getroomActual() {
-        return roomActual;
-    }
-    //SubMenu
-    public int opcion;
-    //Avanzar
-    public void nextroom() {
-        switch (index) {
-                case "0.0": //room1.0
-                    if(keyisUsed){
-                        roomActual = niveles.get("1.0");
-                        index="1.0";
-                        keyisUsed=false;
-                    }else{
-                        System.out.println("La Puerta esta con llave no se puede abrir");
-                    }
-                break;
-                case "1.0":
-                    do {
-                        System.out.println("elige opcion 1 o opcion 2 ");
-                        opcion= sc.nextInt();
-                        sc.nextLine();
-                    }while (opcion<0 || opcion>2);
-                if (opcion == 1) {//Room2.0
-                    roomActual = niveles.get("2.0");
-                    index="2.0";
-                } else if (opcion == 2) {//room3.0
-                    roomActual = niveles.get("3.0");
-                    index="3.0";
-                }
-                break;
-                case "2.0":
-                    do {
-                        System.out.println("elige opcion 1 o opcion 2 ");
-                        opcion= sc.nextInt();
-                        sc.nextLine();
-                    }while (opcion<0 || opcion>2);
-                if (opcion == 1) {//room 2.1
-                    roomActual = niveles.get("2.1");
-                    index="2.1";
-                } else if (opcion == 2) {//room 2.2
-                    roomActual = niveles.get("2.2");
-                    index="2.2";
-                }
-                break;
-                case "2.1", "2.2","3.1","3.2"://room 4.0
-                    roomActual = niveles.get("4.0");
-                        index = "4.0";
-                    break;
-                case "3.0":
-                    do {
-                        System.out.println("elige opcion 1 o opcion 2 ");
-                        opcion= sc.nextInt();
-                        sc.nextLine();
-                    }while (opcion<0 || opcion>2);
-                    if (opcion == 1) {//room 3.1
-                        roomActual = niveles.get("3.1");
-                    index="3.1";
-                     } else if (opcion == 2) {//room 3.2
-                        roomActual = niveles.get("3.2");
-                    index="3.2";
-                    }
-                break;
-            case "4.0"://room 5.0
-                if(keyisUsed){
-                    roomActual = niveles.get("5.0");
-                    index="5.0";
-                    keyisUsed=false;
-                }else{
-                    System.out.println("La Puerta esta con llave no se puede abrir");
-                }
-                break;
-                case "5.0"://room 6.0
-                    roomActual = niveles.get("6.0");
-                    index="6.0";
-                    break;
-                    case "6.0":
-                        do {
-                            System.out.println("elige opcion 1 o opcion 2");
-                            opcion= sc.nextInt();
-                            sc.nextLine();
-                        }while (opcion<0 || opcion>2);
-                        if (opcion == 1) {//room 6.1
-                            roomActual = niveles.get("6.1");
-                            index="6.1";
-                        } else if (opcion == 2) {//room 6.2
-                            roomActual = niveles.get("6.2");
-                            index="6.2";
-                        }
-                        break;
-                        case "6.1":
-                            System.out.println("no hay salida");
-
-                            break;
-            case "6.2":
-                System.out.println("Despertaste del sueño");
-                break;
+    public void avanzar() {
+        if (roomActual.getSalida() != null) {
+            index = roomActual.getSalida();
+            roomActual = niveles.get(index);
+        } else {
+            System.out.println("No puedes avanzar desde aquí.");
         }
-        //cada caso hara un sout de la descripcion de la sala revisen la funcion descripcion de cada sala para saber que sucede cuando es llamada
-        roomActual.descripcionSala();
     }
-    //Retroceder
-    public void backtroom() {
-        switch (index) {
-            case "0.0": //room 1.0
-                System.out.println("No puedes retroceder, la ventana no se ve que se pueda abrir, solo queda la pasar por la puerta");
-                break;
-            case "1.0":
-                roomActual = niveles.get("0.0");
-                index="0.0";
-                break;
-            case "2.1", "2.2":
-                roomActual = niveles.get("2.0");
-                index="2.0";
-                break;
-            case "3.0","2.0":
-                roomActual = niveles.get("1.0");
-                index="1.0";
-                break;
-            case "3.1","3.2":
-                roomActual = niveles.get("3.0");
-                index="3.0";
-                break;
-            case "4.0":
-                do {
-                    System.out.println("elige opcion 1 o opcion 2 opcion 3 opcion 4");
-                    opcion= sc.nextInt();
-                    sc.nextLine();
-                }while (opcion<0 || opcion>4);
-                if (opcion==1) {
-                    roomActual = niveles.get("2.1");
-                    index="2.1";
 
-                } else if (opcion==2) {
-                    roomActual = niveles.get("2.2");
-                    index="2.2";
-
-                } else if (opcion==3) {
-                    roomActual = niveles.get("3.1");
-                    index="3.1";
-
-                } else if (opcion==4) {
-                    roomActual = niveles.get("3.2");
-                    index="3.2";
-                }
-                break;
-            case "5.0":
-                roomActual = niveles.get("4.0");
-                index="4.0";
-                break;
-            case "6.0":
-                roomActual = niveles.get("5.0");
-                index="5.0";
-                break;
-            case "6.1", "6.2":
-                roomActual = niveles.get("6.0");
-                index="6.0";
-                break;
+    public void retroceder() {
+        if (roomActual.getRetroceso() != null) {
+            index = roomActual.getRetroceso();
+            roomActual = niveles.get(index);
+        } else {
+            System.out.println("No puedes retroceder desde aquí.");
         }
+    }
+
+    public void mostrarDescripcionHabitacion() {
+        System.out.println("Descripción de la habitación actual:");
         roomActual.descripcionSala();
     }
 
+    public void buscar() {
+        System.out.println("Estás buscando en la habitación...");
+        roomActual.buscar();
+    }
 }
-
