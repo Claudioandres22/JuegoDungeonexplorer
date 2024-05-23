@@ -1,28 +1,29 @@
-public class SalaEnemigo extends Room {
-    private String enemigo;
 
-    public SalaEnemigo(String enemigo) {
-        this.enemigo = enemigo;
+
+public class salaEnemigo extends room {
+
+
+    public salaEnemigo(String descripcion, GameObject objeto) {
+        super(descripcion, objeto);
+
     }
 
+
+
     @Override
-    public void examinar() {
-        System.out.println("No puedes examinar la habitación mientras estás en peligro.");
+    public String  descripcionSala() {
+        return descripcion;
     }
 
     @Override
     public void buscar() {
-        System.out.println("Estás buscando en la sala, pero hay un " + enemigo + " aquí.");
-        // Implementa la lógica de búsqueda si es necesario
+        System.out.println("No puedes buscar, recibiste un impacto que te dejó tambaleando");
     }
 
     @Override
-    public void descripcionSala() {
-        System.out.println("¡Cuidado! Hay un " + enemigo + " en esta sala.");
+    public void recoger(String n,Personaje p) {
+        System.out.println("Tus manos no responden, intenta avanzar de sala");
     }
 
-    @Override
-    public String getSalida() {
-        return "";
-    }
+
 }
