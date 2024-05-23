@@ -1,11 +1,18 @@
 public class Llave extends GameObject {
-    public Llave(String nombreObjeto, String descripcion) {
-        super(nombreObjeto, descripcion);
+
+    public Llave(String nombreObjeto, String descripcionObjeto) {
+
+        super(nombreObjeto, descripcionObjeto);
     }
 
     @Override
-    public void usar(Personaje personaje) {
-        System.out.println("Has usado la " + getNombreObjeto());
-        // Implementa la lógica para usar la llave
+    public String getDescripcionObjeto() {
+
+        return super.getDescripcionObjeto();
+    }
+
+    @Override
+    public void usar(Personaje p) {
+        System.out.println("Introduciste la llave en la puerta, se ha abierto");
     }
 }
