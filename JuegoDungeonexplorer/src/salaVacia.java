@@ -1,12 +1,15 @@
 
 
 public class salaVacia extends room {
-    public salaVacia() {
+
+    public salaVacia(String descripcion, GameObject objeto) {
+        super(descripcion, objeto);
     }
 
+
     @Override
-        public void descripcionSala() {
-            System.out.println("Llegas a una sala vacía, debes seguir explorando");
+        public String descripcionSala() {
+            return descripcion;
         }
         @Override
         public void buscar() {

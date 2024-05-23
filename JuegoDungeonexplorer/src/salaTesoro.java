@@ -1,28 +1,19 @@
 
 public class salaTesoro extends room {
 
-    GameObject objeto;
-    //Para agregar el objeto
-    public void setObjeto(GameObject objeto) {
-        this.objeto = objeto;
+    public salaTesoro(String descripcion, GameObject objeto) {
+        super(descripcion, objeto);
     }
 
-    public salaTesoro(GameObject objeto) {
-        this.objeto = objeto;
-    }
-
-    public salaTesoro(){
-
-    }
     @Override
-    public void descripcionSala() {
-        System.out.println("Llegas a una sala donde te llama la atención un agujero en la pared, deberías investigar");
+    public String descripcionSala() {
+        return descripcion;
     }
 
     @Override
     public void buscar() {
         if (objeto != null) {
-            System.out.println("Encontraste: " + objeto.getNombreObjeto());
+            System.out.println("Encontraste " +objeto.getNombreObjeto() +": "+ objeto.getDescripcionObjeto());
         } else {
             System.out.println("No has encontrado nada");
         }

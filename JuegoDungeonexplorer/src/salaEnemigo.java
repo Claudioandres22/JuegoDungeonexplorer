@@ -2,23 +2,17 @@
 
 public class salaEnemigo extends room {
 
-    private String nombreEnemigo;
 
-    public salaEnemigo(String nombreEnemigo) {
-        this.nombreEnemigo = nombreEnemigo;
+    public salaEnemigo(String descripcion, GameObject objeto) {
+        super(descripcion, objeto);
+
     }
 
-    public salaEnemigo() {
-    }
 
-    public String getnombreEnemigo() {
-
-        return nombreEnemigo;
-    }
 
     @Override
-    public void descripcionSala() {
-        System.out.println("Llegas a una sala con poca luz, recibes un fuerte golpe un " + nombreEnemigo + "te golpeó");
+    public String  descripcionSala() {
+        return descripcion;
     }
 
     @Override

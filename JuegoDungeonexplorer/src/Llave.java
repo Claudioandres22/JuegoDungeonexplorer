@@ -13,7 +13,6 @@ public class Llave extends GameObject {
 
     @Override
     public void usar(Personaje p) {
-
         System.out.println("Introduciste la llave en la puerta, se ha abierto");
     }
 }
