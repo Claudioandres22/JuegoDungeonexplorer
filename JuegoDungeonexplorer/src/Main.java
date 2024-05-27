@@ -9,23 +9,25 @@ public class Main {
 
         Personaje jugador = new Personaje();
         ControladorDeNiveles nivelController = new ControladorDeNiveles();
-
+        System.out.println("Juego hecho por Carlos - Elias - Constanza - Claudio ©");
         System.out.print("Ingresa el nombre del jugador: ");
         String nombre = scanner.nextLine();
         jugador.setNombreDelJugador(nombre);
 
 
         System.out.println("Escribe '!help' para ver opciones:");
-        System.out.println("Te despiertas con la cabeza confundida y el corazón latiendo con fuerza\n" +
+        System.out.println(nombre + " despertaste con la cabeza confundida y el corazón latiendo con fuerza\n" +
                 "miras a tu alrededor \n" +
                 "la oscuridad es asfixiante, apenas rota por la débil luz de la luna que se filtra por una ventana rota\n" +
                 "Exploras la habitación con manos temblorosas. Encuentras una linterna en una esquina, su luz tenue parpadea débilmente. \n" +
                 "Junto a ella, una nota arrugada y amarillenta yace en el suelo polvoriento. Con mano temblorosa, recoges ambos objetos y examinas la nota.");
-        System.out.println("Para escapar de esta casa del terror, busca la llave del jardín escondida. \n" +
-                "Pero ten cuidado, los pasillos están llenos de peligros y secretos. No todo lo que ves es lo que parece.");
+        System.out.println("\"Para escapar de esta casa del terror, busca la llave del jardín escondida. \n" +
+                "Pero ten cuidado, los pasillos están llenos de peligros y secretos. No todo lo que ves es lo que parece.\"");
 
 
-        mostrarOpciones();
+        System.out.println("-------------------------");
+        System.out.println("!help para ver opciones");
+        System.out.println("-------------------------");
 
         boolean running = true;
         while (running) {
@@ -38,7 +40,7 @@ public class Main {
                     nivelController.nextroom();
                     if(nivelController.getIndex().equals("2.0")||nivelController.getIndex().equals("2.2")||nivelController.getIndex().equals("3.2")||nivelController.getIndex().equals("5.0")||nivelController.getIndex().equals("6.1")){
                         //llamar a la funcion de recibir daño de jugador
-                        jugador.recibirDanio();
+                        jugador.recibirDanio(1);
                     }
 
                     break;
@@ -47,7 +49,7 @@ public class Main {
                     nivelController.backtroom();
                     if(nivelController.getIndex().equals("2.0")||nivelController.getIndex().equals("2.2")||nivelController.getIndex().equals("3.2")||nivelController.getIndex().equals("5.0")||nivelController.getIndex().equals("6.1")){
                         //llamar a la funcion de recibir daño de jugador
-                        jugador.recibirDanio();
+                        jugador.recibirDanio(1);
                     }
                     break;
                 case "estatus":

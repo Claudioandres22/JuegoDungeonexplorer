@@ -179,7 +179,7 @@ public class ControladorDeNiveles {
                 break;
             case "4.0":
                 do {
-                    System.out.println("Vaya hay dos Caminos, por favor seleccione 1 o 2 de que camino quiere tomar");
+                    System.out.println("Vaya hay dos Caminos, por favor seleccione 1 o 2 o 3 o 4 de que camino quiere tomar");
                     System.out.println("1");
                     System.out.println("2");
                     System.out.println("3");

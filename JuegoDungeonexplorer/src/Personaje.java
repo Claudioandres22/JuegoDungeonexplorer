@@ -62,7 +62,7 @@ public class Personaje {
         vidas++; //aumenta en 1
     }
     //SALUD: (-) if para restar daño
-    public void recibirDanio() {
+    public void recibirDanio(int i) {
         if(protegidoConCaja){
             System.out.println("el enemigo no te detecto");
         }else {
